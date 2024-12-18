@@ -20,22 +20,37 @@
             border: 1px solid #900;
             display: none;
         }
+        #info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #3c763d;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <h1>Harici Ekran Kontrolü</h1>
-    <p>Sınav sırasında harici ekran kullanımını tespit etmek için bu araç çalışıyor.</p>
+    <p>Sınav sırasında ekran kullanımını kontrol etmek için bu araç çalışıyor.</p>
     <div id="status">Harici bir ekran bağlı olabilir!</div>
+    <div id="info">Tek ekran kullanıyorsunuz.</div>
     <script>
-        // Ekran tespiti
+        // Harici ekran kontrol fonksiyonu
         function checkForExternalScreen() {
             const screenWidth = window.screen.availWidth;
             const screenHeight = window.screen.availHeight;
 
-            // Kullanıcının ekran çözünürlüğü ile kullanılabilir alan karşılaştırılır
+            // Harici ekran bağlıysa
             if (screenWidth > screen.width || screenHeight > screen.height) {
+                alert("Harici bir ekran algılandı! Lütfen harici ekranı bağlantıdan çıkarın.");
                 const statusDiv = document.getElementById('status');
                 statusDiv.style.display = 'block';
+            } else {
+                // Tek ekran kullanılıyorsa
+                alert("Tek ekran kullanıyorsunuz. Devam edebilirsiniz.");
+                const infoDiv = document.getElementById('info');
+                infoDiv.style.display = 'block';
             }
         }
 
