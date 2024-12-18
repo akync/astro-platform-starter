@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HDMI Kontrol</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fdd;
+            color: #900;
+            border: 1px solid #900;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Harici Ekran Kontrolü</h1>
+    <p>Sınav sırasında harici ekran kullanımını tespit etmek için bu araç çalışıyor.</p>
+    <div id="status">Harici bir ekran bağlı olabilir!</div>
+    <script>
+        // Ekran tespiti
+        function checkForExternalScreen() {
+            const screenWidth = window.screen.availWidth;
+            const screenHeight = window.screen.availHeight;
+
+            // Kullanıcının ekran çözünürlüğü ile kullanılabilir alan karşılaştırılır
+            if (screenWidth > screen.width || screenHeight > screen.height) {
+                const statusDiv = document.getElementById('status');
+                statusDiv.style.display = 'block';
+            }
+        }
+
+        // Sayfa yüklendiğinde kontrol başlatılır
+        window.onload = checkForExternalScreen;
+    </script>
+</body>
+</html>
